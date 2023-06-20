@@ -13,6 +13,12 @@ class VipController extends Controller
         ]);
     }
 
+    public function search($searchKey) {
+        return inertia('Vips/Index', [
+            'vips'  => Vip::where('full_name', 'like', "%$searchKey%")->get()
+        ]);
+    }
+
     public function show(Vip $vip) {
         return inertia('Vips/Show', [
             'vip'   => $vip

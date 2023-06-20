@@ -6,6 +6,9 @@
             <div class="flex justify-between">
                 <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">VIPs</h2>
                 <div>
+                    <input type="text" class="rounded-full border border-gray-500 w-[400px] text-center" placeholder="&#128269;Search" @keydown.enter="search($event)">
+                </div>
+                <div>
                     <Link href="/vips/create" class="px-4 py-2 bg-gray-600 shadow border-gray-400 border hover:bg-gray-400 rounded text-white">
                             Add VIP
                     </Link>
@@ -24,16 +27,19 @@
   <script setup>
   import VipCard from '../../Components/VipCard.vue';
   import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-  import { Head, Link } from '@inertiajs/vue3';
+  import { Head, Link, router } from '@inertiajs/vue3';
 
-  defineProps({
+  const props = defineProps({
     vips: Array,
   });
+
+  function search(ev) {
+    router.visit('/vips/search/' + ev.target.value)
+  }
   </script>
 
   <style scoped>
   .grid {
-    /* Adjust grid column sizes for different screen sizes */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
   </style>
