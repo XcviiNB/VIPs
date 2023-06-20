@@ -34,7 +34,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
     Route::get('/vips', [VipController::class, 'index'])->name('vips');
+    Route::get('/vips/create', [VipController::class, 'create'])->name('vips.create');
+    Route::post('/vips', [VipController::class, 'store'])->name('vip.store');
+    Route::get('/vips/{vip}', [VipController::class, 'show'])->name('vips.show');
 });
 
 require __DIR__.'/auth.php';

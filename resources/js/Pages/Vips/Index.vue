@@ -3,7 +3,14 @@
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">VIPs</h2>
+            <div class="flex justify-between">
+                <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">VIPs</h2>
+                <div>
+                    <Link href="/vips/create" class="px-4 py-2 bg-gray-600 shadow border-gray-400 border hover:bg-gray-400 rounded text-white">
+                            Add VIP
+                    </Link>
+                </div>
+            </div>
         </template>
 
         <div class="bg-gray-8=900 overflow-hidden ml-2 mr-2">
@@ -17,7 +24,7 @@
   <script setup>
   import VipCard from '../../Components/VipCard.vue';
   import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-  import { Head } from '@inertiajs/vue3';
+  import { Head, Link } from '@inertiajs/vue3';
 
   defineProps({
     vips: Array,
