@@ -52,4 +52,11 @@ class VipController extends Controller
             'vips' => $vips
         ]);
     }
+
+    public function toggleEnable(Vip $vip) {
+        $vip->enable = !$vip->enable;
+        $vip->save();
+
+        return back();
+    }
 }

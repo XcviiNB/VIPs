@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/vips', [VipController::class, 'store'])->name('vip.store');
     Route::get('/vips/{vip}', [VipController::class, 'show'])->name('vips.show');
     Route::get('/vips/search/{searchKey}', [VipController::class, 'search'])->name('vips.search');
+    Route::post('/vips/toggle/{vip}', [VipController::class, 'toggleEnable'])->name('vips.toggleEnable');
 });
 
 require __DIR__.'/auth.php';
