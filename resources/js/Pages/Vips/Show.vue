@@ -15,11 +15,15 @@
         </template>
 
         <div class="py-6">
-
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 bg-white shadow rounded py-6 flex">
                 <img :src="vip.picUrl" alt="VIP Picture" class="aspect-square w-[40%] object-cover">
                 <div class="pl-6 w-full flex flex-col">
-                    <h4 class="text-3xl mb-6">{{ vip.full_name }}</h4>
+                    <div class="flex">
+                        <h4 class="text-3xl mb-6 flex-1">{{ vip.full_name }}</h4>
+                        <div v-if="user.role=='admin'">
+                            <Link :href="'/vips/' + vip.id" method="delete" class="p-2 bg-red-600 hover:bg-red-400 text-white">Delete</Link>
+                        </div>
+                    </div>
                     <div class="p-4 bg-gray-100 flex-1">
                         {{ vip.position }}
                     </div>
@@ -32,12 +36,17 @@
 </template>
 
 <script setup>
-import { Link, Head } from '@inertiajs/vue3'
+import { Link, Head, usePage } from '@inertiajs/vue3'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue'
+import { computed } from 'vue'
 
 
 const prop = defineProps({
     'vip': Object
 })
+
+const page = usePage()
+
+const user = computed(() => page.props.auth.user)
 
 </script>

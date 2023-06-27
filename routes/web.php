@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/vips/{vip}', [VipController::class, 'show'])->name('vips.show');
     Route::get('/vips/search/{searchKey}', [VipController::class, 'search'])->name('vips.search');
     Route::post('/vips/toggle/{vip}', [VipController::class, 'toggleEnable'])->name('vips.toggleEnable');
+    Route::delete('/vips/{vip}', [VipController::class, 'destroy'])->name('vips.delete')->middleware('role:admin');
 });
 
 require __DIR__.'/auth.php';

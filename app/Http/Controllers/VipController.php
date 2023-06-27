@@ -59,4 +59,10 @@ class VipController extends Controller
 
         return back();
     }
+
+    public function destroy(Vip $vip) {
+        $vip->delete();
+
+        return redirect('/vips');
+    }
 }
